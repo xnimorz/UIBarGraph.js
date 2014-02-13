@@ -3,5 +3,12 @@
     height: 200px;
 }
 
+.left {
+    display: inline-block;
+    margin: 10px;
+    width: 510px;
+
+}
+
 
 

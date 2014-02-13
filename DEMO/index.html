@@ -11,7 +11,7 @@
             var dict = [],
                 anotherDict = [];
 
-            dict["Один"] = 70;
+            dict["one"] = 70;
             dict["second"] = 80;
             dict["third"] = 32;
 
@@ -25,7 +25,8 @@
             $(".test-graph-second").UIBarGraph({
                 items: dict,
                 blockColor:"#3498db",
-                textWidth: "150px"
+                textWidth: "150px",
+                lineColor: "#000"
             });
 
             anotherDict["First value"] = 10;
@@ -44,7 +45,7 @@
             }).addItems(dict);
 
             setTimeout(function() {
-                $(".test-graph").moveItem("second", 5);
+                $(".test-graph").moveItem("second", 5).moveItem("one", 40).moveItem("third",80);
             }, 1000);
 
 
@@ -52,10 +53,26 @@
     </script>
 </head>
 <body>
-    <div class="target-graph test-graph"></div>
-    <div class="target-graph test-graph-second"></div>
-    <div class="target-graph test-graph-extend-items"></div>
-    <div class="target-graph test-graph-add-items"></div>
+    <div class="left">
+        Пример графа, который через секунду сменит свое значение:
+        <div class="target-graph test-graph"></div>
+    </div>
+
+    <div class="left">
+        Установка другого значения цвета, ширины текста, цвета границы контейнера:
+        <div class="target-graph test-graph-second"></div>
+    </div>
+
+    <div class="left">
+        Установка значений и последующий extend значений:
+        <div class="target-graph test-graph-extend-items"></div>
+    </div>
+    <div class="left">
+        Установка значений и последующий add новых столбцов:
+        (в этом случае существующие значения НЕ перезаписываются)
+        <div class="target-graph test-graph-add-items"></div>
+
+    </div>
     <!--<div class="target-graph">
         <div class="ui-bar-graph">
             <div class="ui-bar-graph-line">

@@ -1,3 +1,11 @@
+/**
+ * UIBarGraph.js v1.0
+ *
+ * JQuery plugin
+ *
+ * by Nikita Mostovoy
+ */
+
 (function ($) {
 
 
@@ -45,7 +53,7 @@
     $.fn.UIBarGraph = function (settings) {
         var options = $.extend({}, defaults, settings),
             barGraph = $('<div class="ui-bar-graph"/>'),
-            barWidth = $(this)[0].clientWidth - options.valueWidth - parseInt(options.textWidth);
+            barWidth = $(this)[0].clientWidth - (options.showValues ? options.valueWidth : 0) - (!options.isTextOnProgress ? parseInt(options.textWidth) : 0);
 
         options.items = [];
 
@@ -136,7 +144,7 @@
             for (var i in items) {
                 options.items[i] = items[i];
             }
-            $(this).repaint();
+            return $(this).repaint();
         };
 
         /**
@@ -154,7 +162,7 @@
             }
 
             paint(newItems);
-
+            return $(this);
         };
 
         /**
@@ -163,6 +171,25 @@
         $.fn.repaint = function() {
             barGraph.html("");
             paint();
+            return $(this);
+        }
+
+        $.fn.getItem = function(key) {
+            return options.items[key];
+        }
+
+        $.fn.getItemsArray = function() {
+            return options.items;
+        }
+
+        /**
+         * Обновление параметров
+         * НЕ рекомендуется добавлять данным образом новые значения столбцов.
+         * @param settings
+         */
+        $.fn.extendOptions = function(settings) {
+            options = $.extend({}, options, settings);
+            return $(this);
         }
 
         /**
@@ -171,17 +198,19 @@
          * @param value - новое значение
          */
         $.fn.moveItem = function(item, value) {
-            var currentBlock = $(this).find(".ui-bar-graph-line[data-name='" + item + "']");
+
 
 
             if (options.items[item]) {
                 options.items[item] = value;
             }
 
-            currentBlock.children(".ui-bar-graph-line__block").css({
-                "width": ((barWidth*options.items[i])/(options.maxValue - options.minValue))+"px"
+            $(this).find(".ui-bar-graph-line[data-name='" + item + "']").children(".ui-bar-graph-line__block").css({
+                "width": ((barWidth*options.items[item])/(options.maxValue - options.minValue))+"px"
             })
                 .end().children(".ui-bar-graph-line__value").html(value);
+
+            return $(this);
         }
 
 
