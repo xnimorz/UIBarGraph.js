@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="../UIBarGraph.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="http://yandex.st/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="../UIBarGraph.js"></script>
+    <script>
+        window.onload = function() {
+            var dict = [],
+                anotherDict = [];
+
+            dict["Один"] = 70;
+            dict["second"] = 80;
+            dict["third"] = 32;
+
+            $(".test-graph").UIBarGraph({
+                items : dict
+            });
+
+            dict['something'] = 100;
+            dict['my amazing item'] = 10;
+
+            $(".test-graph-second").UIBarGraph({
+                items: dict,
+                blockColor:"#3498db",
+                textWidth: "150px"
+            });
+
+            anotherDict["First value"] = 10;
+            anotherDict["Another value"] = 90;
+            anotherDict["second"] = 30;
+
+            $(".test-graph-extend-items").UIBarGraph({
+                items: anotherDict,
+                textWidth: "120px",
+                isTextOnProgress : true
+            }).extendItems(dict);
+
+            $(".test-graph-add-items").UIBarGraph({
+                items: anotherDict,
+                textWidth: "120px"
+            }).addItems(dict);
+
+            setTimeout(function() {
+                $(".test-graph").moveItem("second", 5);
+            }, 1000);
+
+
+        }
+    </script>
+</head>
+<body>
+    <div class="target-graph test-graph"></div>
+    <div class="target-graph test-graph-second"></div>
+    <div class="target-graph test-graph-extend-items"></div>
+    <div class="target-graph test-graph-add-items"></div>
+    <!--<div class="target-graph">
+        <div class="ui-bar-graph">
+            <div class="ui-bar-graph-line">
+                <div class="ui-bar-graph-line__text">Один</div>
+                <div class="ui-bar-graph-line__block"></div>
+                <div class="ui-bar-graph-line__value">70</div>
+            </div>
+            <div class="ui-bar-graph-line">
+                <div class="ui-bar-graph-line__text">Два</div>
+                <div class="ui-bar-graph-line__block"></div>
+                <div class="ui-bar-graph-line__value">70</div>
+            </div>
+            <div class="ui-bar-graph-line">
+                <div class="ui-bar-graph-line__text">Три</div>
+                <div class="ui-bar-graph-line__block"></div>
+                <div class="ui-bar-graph-line__value">70</div>
+            </div>
+            <div class="ui-bar-graph-line">
+                <div class="ui-bar-graph-line__text">Четыре</div>
+                <div class="ui-bar-graph-line__block"></div>
+                <div class="ui-bar-graph-line__value">70</div>
+            </div>
+            <div class="ui-bar-graph-line">
+                <div class="ui-bar-graph-line__text">Пять</div>
+                <div class="ui-bar-graph-line__block"></div>
+                <div class="ui-bar-graph-line__value">70</div>
+            </div>
+        </div>
+    </div>
+<hr>
+    <div class="target-graph">
+        <div class="ui-bar-graph">
+            <div class="ui-bar-graph-line">
+                <div class="ui-bar-graph-line__block">
+                    <div class="ui-bar-graph-line__text">Один</div>
+                    <div class="ui-bar-graph-line__value ui-bar-graph-line__value_right">70</div>
+                </div>
+            </div>
+            <div class="ui-bar-graph-line">
+
+                <div class="ui-bar-graph-line__block"><div class="ui-bar-graph-line__text">Два</div>
+                <div class="ui-bar-graph-line__value ui-bar-graph-line__value_right">70</div>
+                </div>
+            </div>
+            <div class="ui-bar-graph-line">
+
+                <div class="ui-bar-graph-line__block"><div class="ui-bar-graph-line__text">Три</div>
+                <div class="ui-bar-graph-line__value ui-bar-graph-line__value_right" >70</div>
+                </div>
+            </div>
+            <div class="ui-bar-graph-line">
+
+                <div class="ui-bar-graph-line__block"><div class="ui-bar-graph-line__text">Четыре</div>
+                <div class="ui-bar-graph-line__value ui-bar-graph-line__value_right">70</div>
+                </div>
+            </div>
+            <div class="ui-bar-graph-line">
+
+                <div class="ui-bar-graph-line__block"><div class="ui-bar-graph-line__text">Пять</div>
+                <div class="ui-bar-graph-line__value ui-bar-graph-line__value_right">70</div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</body>
+</html>

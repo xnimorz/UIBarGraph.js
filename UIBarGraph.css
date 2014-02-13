@@ -1,0 +1,21 @@
+.ui-bar-graph-line__value {
+    float: left;
+}
+
+.ui-bar-graph-line__text {
+    float: left;
+}
+
+.ui-bar-graph-line__value_right {
+    float: right;
+    width: auto;
+}
+
+.ui-bar-graph-line__block {
+    float: left;
+}
+
+.ui-bar-graph-line {
+    overflow: hidden;
+    width: 100%;
+}
